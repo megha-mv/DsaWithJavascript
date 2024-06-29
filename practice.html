@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BST</title>
+  <script>
+    //step-3 create new node for Binar search tress
+    class CreatNewNode{
+      constructor(val){
+        this.value=val;
+        this.left = null;
+        this.right = null;
+      }
+    }
+
+    //step-1 - create class
+    class BSTree {
+      constructor(){
+        this.root = null;
+      }
+      //
+      isTreeEmpty(){
+        return this.root === null;
+      }
+
+      //this function is to place node in BST
+      makeNewNodeForTree(val){
+        let newNode = new CreatNewNode(val);
+        if(this.root === null){
+          this.root = newNode;
+        }else{
+          this.insertNodeAtCorrectPlace(this.root, newNode)
+        }
+      }
+      
+      //this function is to add node at its correct position
+      insertNodeAtCorrectPlace(root,newNode){
+        if(root.value> newNode.value){
+          if(root.left === null){
+            root.left = newNode;
+          } else {
+            this.insertNodeAtCorrectPlace(root.left,newNode)
+          }
+        } else {
+          if(root.right === null){
+            root.right = newNode;
+          } else {
+            this.insertNodeAtCorrectPlace(root.right,newNode)
+          }
+        }
+      }
+    }
+
+
+
+    //step-2 -create a new object {as without object functions cannot be called}
+    let bst = new BSTree();
+    console.log(bst.isTreeEmpty(),' - so there are no nodes in this BST');
+    bst.makeNewNodeForTree(20);
+    bst.makeNewNodeForTree(10);
+    bst.makeNewNodeForTree(5);
+    bst.makeNewNodeForTree(15);
+    bst.makeNewNodeForTree(16);
+    bst.makeNewNodeForTree(25);
+    bst.makeNewNodeForTree(22);
+    bst.makeNewNodeForTree(30);
+    console.log(bst);
+    console.log(bst.isTreeEmpty(),' - so there are some nodes in this BST');
+  </script>
+</head>
+<body>
+  <h1>Binary Search Tree</h1>
+</body>
+</html>
