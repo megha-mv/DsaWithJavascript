@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search in BST</title>
+  <script>
+    //
+    class CreatNewNode{
+      constructor(val){
+        this.value = val;
+        this.left = null;
+        this.right = null;
+      }
+    }
+    //
+    class BSTree{
+      constructor(){
+        this.root=null;
+      }
+      //
+      isTreeEmpty(){
+        return this.root === null;
+      }
+      //
+      makeNewNodeForTree(val){
+        let newNode = new CreatNewNode(val);
+        if(this.root === null){
+          this.root = newNode;
+        } else {
+          this.insertNodeAtBestPlace(this.root,newNode);
+        }
+      }
+
+      //
+      insertNodeAtBestPlace(root, newNode){
+        if(root.value>newNode.value){
+          if(root.left === null){
+            root.left = newNode
+          } else {
+            this.insertNodeAtBestPlace(root.left,newNode)
+          }
+        } else {
+          if(root.right === null){
+            root.right = newNode
+          } else {
+            this.insertNodeAtBestPlace(root.right,newNode)
+          }
+        }
+      }
+    }
+
+    let bst = new BSTree();
+    
+    console.log('bst empty? -',bst.isTreeEmpty());
+    bst.makeNewNodeForTree(25);
+    bst.makeNewNodeForTree(15);
+    bst.makeNewNodeForTree(30);
+    bst.makeNewNodeForTree(10);
+    bst.makeNewNodeForTree(18);
+    bst.makeNewNodeForTree(28);
+    bst.makeNewNodeForTree(8);
+    bst.makeNewNodeForTree(38);
+    console.log(bst);
+  </script>
+</head>
+<body>
+  <h1> Search in BST</h1>
+</body>
+</html>
